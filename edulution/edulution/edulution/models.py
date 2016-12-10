@@ -9,3 +9,9 @@ class User(models.Model):
 class Subject(models.Model):
     name = models.CharField()
 
+
+class Module(models.Model):
+    name = models.CharField()
+    requirement = models.PositiveIntegerField() # the module "2" needs "1" to be started
+    subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
+
