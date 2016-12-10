@@ -19,7 +19,7 @@
 			  </ul>
 			  <a href="#" class="brand-logo center"><img src="{% static 'edulution/img/Logo.png' %}" height="64px"></a>
 			  <ul id="navbar-right" class="right hide-on-med-and-down">
-                  <li><a href="sass.html">Welcome, John Doe</a></li>
+                  <li><a href="sass.html">Welcome, {% if student %}{{ student.username }}{% else %}John Doe{% endif %} </a></li>
 			  </ul>
 			</div>
 		</nav>

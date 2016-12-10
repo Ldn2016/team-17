@@ -35,7 +35,7 @@
 <br>
 
 <center>
-	<form class="col s4">
+	<form class="col s4" action="./subjects_static.html">
 	<div class="row">
 		<div class="input-field col s4"></div>
 		<div class="input-field col s4">
@@ -46,13 +46,18 @@
     </div>
 		<div class="row"></div>
 	    <div class="row">
-	        <button class="btn waves-effect waves-light" type="submit" name="action">Log In
+	        <button class="btn waves-effect waves-light" type="submit" name="send" onclick="subjects_static.html">Log In
 			   <i class="material-icons right">send</i>
 			</button>
 		</div>
 	</form>
 </center>
 
+	<script type="text/javascript"> 
+	function ShowDiv() {
+    	document.style.display = "/subjects_static.html";
+	}
+</script>
 <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
