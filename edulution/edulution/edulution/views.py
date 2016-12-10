@@ -3,11 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login
-
 
 def login(request):
     user = Student(username="edu", user_id="c0041165189a4ac3809b43d0431e9477")
@@ -32,6 +30,7 @@ def subjects(request):
 
 
 def exercise(request):
-    name = "coucou"
+
+    path = 'http://198.199.112.173:8008/learn/khan/math/early-math/cc-early-math-place-value-topic/cc-early-math-tens/groups-of-tens/'
     return render(request, 'edulution/exercise.html', locals())
 
