@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'edulution/css/materialize.min.css' %}" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-wrapper light-green accent-4">
+        <ul id="navbar-left" class="left hide-on-med-and-down">
+            <li><a href="home.html">Home</a></li>
+        </ul>
+        <a href="#" class="brand-logo center"><img src="{% static 'edulution/img/Logo.png' %}" height="64px"></a>
+        <ul id="navbar-right" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Welcome!</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <h3>&nbspMaths</h3>
+</div>
+
+<div class="image">
+    <img src="{% static 'edulution/img/mathoTest.jpeg' %}" alt=""/>
+    <center>
+        <h6 class="col s2"></h6>
+        <div class="card light-green-accent-1" style="margin:20px;">
+            <h6 class="col s8">This is a test. Don't feel worried, the results will show you how well you've done in the last
+                module </h6>
+            <h6 class="col s8">Remember you have 1 hour to complete your test! </h6>
+        </div>
+    </center>
+</div>
+
+    <form method="POST">
+
+        {% for question in questions.all %}
+        <div class="row">
+            <h5>{{ question.question }}</h5>
+        </div>
+            {% with loop as question_loop %}
+            {% if question.list_answer %}
+
+        <div class="row">
+            <div class="col s4"></div>
+                {% for ans in question.list_answer %}
+                <p>
+                    <input name="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}" type="radio" id="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}"/>
+                    <label for="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}">{{ ans }}</label>
+                </p>
+                {% endfor %}
+        </div>
+
+            {% else %}
+
+                <div class="row">
+                    <div class="col s4"></div>
+                    <div class="input-field col s4">
+                        <input id="answer_question_{{ question_loop.index }}" type="text" class="validate">
+                        <label class="active" for="answer_question_{{ question_loop.index }}">Your answer</label>
+                    </div>
+                </div>
+
+            {% endif %}
+            {% endwith %}
+
+        {% endfor %}
+
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+        </button>
+    </form>
+
+    <br>
+    <br>
+
+</center>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{% static 'edulution/js/materialize.min.js' %}"></script>
+</body>
+</html>
