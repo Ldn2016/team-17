@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render, redirect
+import json
 
 def login(request):
     user = Student(username="edu", user_id="c0041165189a4ac3809b43d0431e9477")
@@ -39,4 +40,7 @@ def exercise(request):
 def test(request, module_id):
     the_test = Module.objects.get(id=module_id).associated_test
     questions = Question.objects.filter(test=the_test)
+    for i, q in enumerate(questions):
+        if q.list_answer:
+            questions[i].list_answer = json.loads(q.list_answer)
     return render(request, 'edulution/test.html', locals())
