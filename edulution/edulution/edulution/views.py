@@ -27,7 +27,7 @@ def subjects(request):
         student = Student.objects.get(user_id=request.session['userid'])
     except:
         student = None
-    
+
     return render(request, 'edulution/subjects.html', locals())
 
 
@@ -35,3 +35,8 @@ def exercise(request):
     path = 'http://198.199.112.173:8008/learn/khan/math/early-math/cc-early-math-place-value-topic/cc-early-math-tens/groups-of-tens/'
     return render(request, 'edulution/exercise.html', locals())
 
+
+def test(request, module_id):
+    the_test = Module.objects.get(id=module_id).associated_test
+    questions = Question.objects.filter(test=the_test)
+    return render(request, 'edulution/test.html', locals())
