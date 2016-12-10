@@ -1,5 +1,5 @@
-1 présentation
-2 goal
+1 Présentation
+2 Goal
 3 Solution
 4 Demo
 5 Conlcusion
