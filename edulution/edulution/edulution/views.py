@@ -2,11 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from django.shortcuts import render
 from .models import *
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout, login
 
 
 def login(request):
@@ -14,13 +11,12 @@ def login(request):
     user.save()
     if request.method == "POST":
         username = request.POST.get('username', '')
-        print(username)
         try:
             user = Student.objects.get(username=username)
-            print(user)
-            request.user = user
+            request.session['userid'] = user.user_id
             return redirect("/student/subjects/")
-        except:
+        except Exception as e:
+            print(e)
             error = True
             message = "Can't find username, please try 'edu'"
     name = "coucou"
@@ -28,6 +24,10 @@ def login(request):
 
 
 def subjects(request):
+    try:
+        student = Student.objects.get(user_id=request.session['userid'])
+    except:
+        student = None
     return render(request, 'edulution/subjects.html', locals())
 
 
