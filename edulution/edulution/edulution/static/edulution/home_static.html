@@ -11,20 +11,40 @@
 </head>
 
 <body>
-<div class="row center-align">
-<img src="img/Logo.png">
+
+<nav>
+	<div class="nav-wrapper light-green accent-4">
+	  <ul id="navbar-left" class="left hide-on-med-and-down">
+		<li><a href="home.html">Home</a></li>
+	  </ul>
+	  <a href="#" class="brand-logo center"><img src="img/Logo.png" height="64px"></a>
+	  <ul id="navbar-right" class="right hide-on-med-and-down">
+		<li><a href="sass.html">Welcome!</a></li>
+	  </ul>
+	</div>
+</nav>
+
+
+
+<div class="slider">
+	<ul class="slides">
+	  <li>
+	    <img src="img/tablets.png"> <!-- random image -->
+	    <div class="caption center-align">
+	      <h3>Welcome!</h3>
+	    </div>
+	  </li>
+	</ul>
 </div>
- <br>
- <br>
- <br>
- <br>
-<form class="col s5">
-    <div class="input-field col s5 center-align">
-      <i class="material-icons prefix">account_circle</i>
-      <input id="icon_prefix" type="text" class="validate">
-      <label for="icon_prefix">Username</label>
+      
+<form class="col s5 center-align">
+	<div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
     </div>
-    <div class="row center-align">
+	<div class="row"></div>
+    <div class="row">
         <button class="btn waves-effect waves-light" type="submit" name="action">Log In
 		   <i class="material-icons right">send</i>
 		</button>
