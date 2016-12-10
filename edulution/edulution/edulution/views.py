@@ -19,7 +19,6 @@ def login(request):
             print(e)
             error = True
             message = "Can't find username, please try 'edu'"
-    name = "coucou"
     return render(request, 'edulution/home.html', locals())
 
 
