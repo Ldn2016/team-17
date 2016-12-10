@@ -41,47 +41,64 @@
     </center>
 </div>
 
-    <form method="POST">
-
-        {% for question_loop_index, question in questions %}
-        <hr>
-        <div class="row" style="text-align:center">
-            <h5>{{ question.question }}</h5>
-        </div>
-            {% if question.list_answer %}
-
-        <div class="row" style="text-align:center">
-            <div class="col s4"></div>
-                {% for ans in question.list_answer %}
-                <p>
-                    <input name="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}" type="radio" id="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}"/>
-                    <label for="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}">{{ ans }}</label>
-                </p>
-                {% endfor %}
-        </div>
-
-            {% else %}
-
-                <div class="row">
-                    <div class="col s4"></div>
-                    <div class="input-field col s4">
-                        <input id="answer_question_{{ question_loop_index }}" type="text" class="validate">
-                        <label class="active" for="answer_question_{{ question_loop_index }}">Your answer</label>
-                    </div>
+{% if result_in_perc %}
+<center>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Congratulations !</span>
+                    <p>Your score is {{ result_in_perc }}/100</p>
                 </div>
+                <div class="card-action"><a href="/"><i class="material-icons right"></i>Back to home !</a></div>
+            </div>
+        </div>
+    </div>
 
-            {% endif %}
+</center>
+{% endif %}
 
-        {% endfor %}
+<form method="POST">
+
+    {% for question_loop_index, question in questions %}
+    <hr>
+    <div class="row" style="text-align:center">
+        <h5>{{ question.question }}</h5>
+    </div>
+        {% if question.list_answer %}
+
+    <div class="row" style="text-align:center">
+        <div class="col s4"></div>
+            {% for ans in question.list_answer %}
+            <p>
+                <input name="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}" type="radio" id="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}"/>
+                <label for="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}">{{ ans }}</label>
+            </p>
+            {% endfor %}
+    </div>
+
+        {% else %}
+
+            <div class="row">
+                <div class="col s4"></div>
+                <div class="input-field col s4">
+                    <input id="answer_question_{{ question_loop_index }}" name="answer_question_{{ question_loop_index }}" type="text" class="validate">
+                    <label class="active" for="answer_question_{{ question_loop_index }}">Your answer</label>
+                </div>
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
 
 
-        <center>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right"></i>
-            </button>
-        </center>
-        {% csrf_token %}
-    </form>
+    <center>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+        </button>
+    </center>
+    {% csrf_token %}
+</form>
 
     <br>
     <br>
