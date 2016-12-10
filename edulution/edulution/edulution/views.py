@@ -47,4 +47,4 @@ def test(request, module_id):
         questions = [(i, q) for i, q in enumerate(questions)]
         return render(request, 'edulution/test.html', locals())
     elif request.method == "POST":
-        pass
+        print(request.POST)
