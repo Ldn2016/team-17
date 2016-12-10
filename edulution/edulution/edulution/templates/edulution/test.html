@@ -44,18 +44,18 @@
     <form method="POST">
 
         {% for question in questions.all %}
-        <div class="row">
+        <div class="row" style="text-align:center">
             <h5>{{ question.question }}</h5>
         </div>
-            {% with loop as question_loop %}
+            {% with loop.index as question_loop_index %}
             {% if question.list_answer %}
 
-        <div class="row">
+        <div class="row" style="text-align:center">
             <div class="col s4"></div>
                 {% for ans in question.list_answer %}
                 <p>
-                    <input name="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}" type="radio" id="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}"/>
-                    <label for="answer_question_{{ question_loop.index }}_answer_{{ loop.index }}">{{ ans }}</label>
+                    <input name="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}" type="radio" id="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}"/>
+                    <label for="answer_question_{{ question_loop_index }}_answer_{{ loop.index }}">{{ ans }}</label>
                 </p>
                 {% endfor %}
         </div>
@@ -65,8 +65,8 @@
                 <div class="row">
                     <div class="col s4"></div>
                     <div class="input-field col s4">
-                        <input id="answer_question_{{ question_loop.index }}" type="text" class="validate">
-                        <label class="active" for="answer_question_{{ question_loop.index }}">Your answer</label>
+                        <input id="answer_question_{{ question_loop_index }}" type="text" class="validate">
+                        <label class="active" for="answer_question_{{ question_loop_index }}">Your answer</label>
                     </div>
                 </div>
 
