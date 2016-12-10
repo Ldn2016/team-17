@@ -47,7 +47,7 @@
         <div class="row">
             <h5>{{ question.question }}</h5>
         </div>
-            {% set question_loop = loop %}
+            {% with loop as question_loop %}
             {% if question.list_answer %}
 
         <div class="row">
@@ -71,6 +71,7 @@
                 </div>
 
             {% endif %}
+            {% endwith %}
 
         {% endfor %}
 
