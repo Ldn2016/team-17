@@ -23,3 +23,8 @@ class Exercise(models.Model):
     module = models.ForeignKey('Module', on_delete=models.CASCADE)
     title = models.CharField()
     path = models.TextField()
+
+
+class Test(models.Model):
+    module = models.OneToOneField(Module, related_name='associated_test')
+
