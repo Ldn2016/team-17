@@ -5,6 +5,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'edulution/exercise.html', locals())
+def login(request):
+    name = "coucou"
+    return render(request, 'edulution/home.html', locals())
+
+
+def subjects(request):
+    name = "coucou"
+    return render(request, 'edulution/home.html', locals())
 

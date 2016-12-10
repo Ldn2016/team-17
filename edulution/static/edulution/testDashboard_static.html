@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-  <html>
+<html>
+    <html>
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,6 +11,7 @@
     </head>
 
     <body>
+
 	<nav>
     <div class="nav-wrapper light-green accent-4">
 	  <ul id="navbar-left" class="left hide-on-med-and-down">
@@ -18,17 +19,34 @@
       </ul>
       <a href="#" class="brand-logo center"><img src="img/Logo.png" height="64px"></a>
       <ul id="navbar-right" class="right hide-on-med-and-down">
-        <li>{{ student.username }}</li>
+        <li>Coach</li>
 		<li><a href="home.html">Log out</a></li>
       </ul>
     </div>
   </nav>
-  <div><h2>Module Arithmetics</h2></div>
+  
+  <div><h2>Tests Dashboard</h2></div>
+	    <ul class="collapsible" data-collapsible="accordion">
+		  <li>
+			<div class="collapsible-header light-green accent-1"><span class="new badge">2</span>John Doe</div>
+			<div class="collapsible-body light-green accent-3"><ul><li>Algebra</li><li>Basic English</li></div>
+		  </li>
+		  <li>
+			<div class="collapsible-header light-green accent-1"><span class="new badge">1</span>Jane Doe</div>
+			<div class="collapsible-body light-green accent-3"><ul><li>Algebra</li></div>
+		  </li>
+		  <li>
+			<div class="collapsible-header light-green accent-1"><span class="new badge">1</span>Johnny Doe</div>
+			<div class="collapsible-body light-green accent-3"><ul><li>English - Past Tense</li></div>
+		  </li>
+		  
+		</ul>
 
-  <div><h2>Module {{ module.name }}</h2></div>
-	  <iframe src="http://198.199.112.173:8008/learn/khan/computing/computer-programming/programming/resizing-with-variables/quiz--use-variable-expressions/" height="500px" width="1020px" ></iframe>
+	
+	  
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+
     </body>
-  </html>
+</html>
