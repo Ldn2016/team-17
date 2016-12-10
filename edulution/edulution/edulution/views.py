@@ -27,6 +27,7 @@ def subjects(request):
         student = Student.objects.get(user_id=request.session['userid'])
     except:
         student = None
+    
     return render(request, 'edulution/subjects.html', locals())
 
 
