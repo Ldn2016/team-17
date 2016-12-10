@@ -18,7 +18,7 @@ class Exercise(models.Model):
 
 
 class Student(models.Model):
-    username = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, unique=True)
     user_id = models.CharField(max_length=255, primary_key=True)
     modules = models.ManyToManyField(
         Module,
