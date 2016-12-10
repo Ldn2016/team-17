@@ -38,9 +38,12 @@ def exercise(request):
 
 
 def test(request, module_id):
-    the_test = Module.objects.get(id=module_id).associated_test
-    questions = Question.objects.filter(test=the_test)
-    for i, q in enumerate(questions):
-        if q.list_answer:
-            questions[i].list_answer = json.loads(q.list_answer)
-    return render(request, 'edulution/test.html', locals())
+    if request.method == "GET":
+        the_test = Module.objects.get(id=module_id).associated_test
+        questions = Question.objects.filter(test=the_test)
+        for i, q in enumerate(questions):
+            if q.list_answer:
+                questions[i].list_answer = json.loads(q.list_answer)
+        return render(request, 'edulution/test.html', locals())
+    elif request.method == "POST":
+        pass
