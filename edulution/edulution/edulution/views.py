@@ -54,7 +54,10 @@ def test(request, module_id):
         for i, q in enumerate(questions):
             correct_answers.append(q.answer)
             answers.append(data.get("answer_question_"+str(i), ''))
+            if q.list_answer:
+                questions[i].list_answer = json.loads(q.list_answer)
         result_in_perc = test_results_to_csv("/tmp/output.csv", answers, correct_answers, student_id, the_test.id)
+        questions = [(i, q) for i, q in enumerate(questions)]
         return render(request, 'edulution/test.html', locals())
 
 
