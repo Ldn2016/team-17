@@ -13,4 +13,9 @@ def login(request):
 def subjects(request):
     name = "coucou"
     return render(request, 'edulution/home.html', locals())
+	
+	
+def exercise(request):
+    name = "coucou"
+    return render(request, 'edulution/exercise.html', locals())
 
