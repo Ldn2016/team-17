@@ -4,8 +4,10 @@ from . import views
 
 urlpatterns = [
     # /student/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.login, name='login'),
     # /student/...
-    url(r'^subjects/$', views.index, name='index'),
+    url(r'^subjects/$', views.subjects, name='subjects'),
+	# /student/exercise
+    url(r'^exercise/$', views.exercise, name='exercise'),
 
 ]

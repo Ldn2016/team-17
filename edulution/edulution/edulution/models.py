@@ -1,12 +1,12 @@
 from django.db import models
 
+
 # like addition or subtraction
 # Note : you can deduce the number of modules linked by doing a search query
 class Module(models.Model):
     name = models.CharField(max_length=255)
     requirement = models.PositiveIntegerField() # the module "2" needs "1" to be started
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
-
 
 
 class Exercise(models.Model):
@@ -19,6 +19,7 @@ class Exercise(models.Model):
 
 class Student(models.Model):
     username = models.CharField(max_length=255)
+    user_id = models.CharField(max_length=255, primary_key=True)
     modules = models.ManyToManyField(
         Module,
         through='StudentModule',
