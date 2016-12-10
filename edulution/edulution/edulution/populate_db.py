@@ -1,3 +1,5 @@
+#NOT USED ANYMORE (?)
+
 from models import *
 
 student1 = Student(username="John Doe",user_id="0")
