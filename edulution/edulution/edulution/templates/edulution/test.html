@@ -43,11 +43,11 @@
 
     <form method="POST">
 
-        {% for question in questions.all %}
+        {% for question_loop_index, question in questions.all %}
+        <hr>
         <div class="row" style="text-align:center">
             <h5>{{ question.question }}</h5>
         </div>
-            {% with loop.index as question_loop_index %}
             {% if question.list_answer %}
 
         <div class="row" style="text-align:center">
@@ -71,7 +71,6 @@
                 </div>
 
             {% endif %}
-            {% endwith %}
 
         {% endfor %}
 

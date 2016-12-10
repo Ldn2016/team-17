@@ -44,6 +44,7 @@ def test(request, module_id):
         for i, q in enumerate(questions):
             if q.list_answer:
                 questions[i].list_answer = json.loads(q.list_answer)
+        questions = [(i, q) for i, q in enumerate(questions)]
         return render(request, 'edulution/test.html', locals())
     elif request.method == "POST":
         pass
