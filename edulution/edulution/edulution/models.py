@@ -17,6 +17,16 @@ class StudentModule(models.Model):
     status = models.PositiveIntegerField() # number of times the student passed the test associated with the module
 
 
+class LogExercise(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    exo = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    nb_attempts = models.PositiveIntegerField()
+    struggling = models.BooleanField()
+    date_completed = models.DateField()
+    percentage_of_questions_passed = models.FloatField()
+    nb_attempts_before_completion = models.PositiveIntegerField()
+
+
 # like maths, literature
 class Subject(models.Model):
     name = models.CharField()
