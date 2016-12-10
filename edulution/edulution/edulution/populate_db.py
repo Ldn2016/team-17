@@ -8,3 +8,9 @@ student2.save()
 
 student3 = Student(username="Johnny Doe",user_id="2")
 student3.save()
+
+
+
+subjectMath = Subject(name="Mathematics")
+subjectMath.save()
+
