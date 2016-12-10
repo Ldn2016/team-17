@@ -2,23 +2,20 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from .models import *
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout, login
 
 def login(request):
     user = Student(username="edu", user_id="c0041165189a4ac3809b43d0431e9477")
     user.save()
     if request.method == "POST":
         username = request.POST.get('username', '')
-        print(username)
         try:
             user = Student.objects.get(username=username)
-            print(user)
-            request.user = user
+            request.session['userid'] = user.user_id
             return redirect("/student/subjects/")
-        except:
+        except Exception as e:
+            print(e)
             error = True
             message = "Can't find username, please try 'edu'"
     name = "coucou"
@@ -26,11 +23,20 @@ def login(request):
 
 
 def subjects(request):
+    try:
+        student = Student.objects.get(user_id=request.session['userid'])
+    except:
+        student = None
+
     return render(request, 'edulution/subjects.html', locals())
 
 
 def exercise(request):
-
     path = 'http://198.199.112.173:8008/learn/khan/math/early-math/cc-early-math-place-value-topic/cc-early-math-tens/groups-of-tens/'
     return render(request, 'edulution/exercise.html', locals())
 
+
+def test(request, module_id):
+    the_test = Module.objects.get(id=module_id).associated_test
+    questions = Question.objects.filter(test=the_test)
+    return render(request, 'edulution/test.html', locals())
