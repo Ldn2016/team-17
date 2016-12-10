@@ -15,11 +15,11 @@
 		<nav>
 			<div class="nav-wrapper light-green accent-4">
 			  <ul id="navbar-left" class="left hide-on-med-and-down">
-                  <li><a href="/">Home</a></li>
+                  <li><a href="/student/subjects/">Home</a></li>
 			  </ul>
 			  <a href="#" class="brand-logo center"><img src="{% static 'edulution/img/Logo.png' %}" height="64px"></a>
 			  <ul id="navbar-right" class="right hide-on-med-and-down">
-                  <li><a href="sass.html">Welcome, {% if student %}{{ student.username }}{% else %}John Doe{% endif %} </a></li>
+                  <li><a href="/">Welcome, {% if student %}{{ student.username }}{% else %}John Doe{% endif %} </a></li>
 			  </ul>
 			</div>
 		</nav>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="waves-effect waves-light btn" href="/student/test/1" style="margin-left: 180px"><i class="material-icons left">mode_edit</i>TEST</a>
+                    <a class="waves-effect waves-light btn disabled" href="/student/test/1" style="margin-left: 180px"><i class="material-icons left">mode_edit</i>TEST</a>
                 </div>
 
                 <div class="col s12 m12 l4">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="waves-effect waves-light btn" href="/student/test/1" style="margin-left: 180px"><i class="material-icons left">mode_edit</i>TEST</a>
+                    <a class="waves-effect waves-light btn disabled" href="/student/test/1" style="margin-left: 180px"><i class="material-icons left">mode_edit</i>TEST</a>
                 </div>
 
 			</div>

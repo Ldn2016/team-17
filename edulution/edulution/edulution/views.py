@@ -19,7 +19,6 @@ def login(request):
             print(e)
             error = True
             message = "Can't find username, please try 'edu'"
-    name = "coucou"
     return render(request, 'edulution/home.html', locals())
 
 
@@ -38,14 +37,41 @@ def exercise(request):
 
 
 def test(request, module_id):
+    the_test = Module.objects.get(id=module_id).associated_test
+    questions = Question.objects.filter(test=the_test)
     if request.method == "GET":
-        the_test = Module.objects.get(id=module_id).associated_test
-        questions = Question.objects.filter(test=the_test)
         for i, q in enumerate(questions):
             if q.list_answer:
                 questions[i].list_answer = json.loads(q.list_answer)
-        for q in questions:
-            print(q.list_answer)
+        questions = [(i, q) for i, q in enumerate(questions)]
         return render(request, 'edulution/test.html', locals())
     elif request.method == "POST":
-        pass
+        student_id = request.session['userid']
+        data = request.POST
+        correct_answers = []
+        answers = []
+        for i, q in enumerate(questions):
+            correct_answers.append(q.answer)
+            answers.append(data.get("answer_question_"+str(i), ''))
+            if q.list_answer:
+                questions[i].list_answer = json.loads(q.list_answer)
+        result_in_perc = test_results_to_csv("/tmp/output.csv", answers, correct_answers, student_id, the_test.id)
+        questions = [(i, q) for i, q in enumerate(questions)]
+        return render(request, 'edulution/test.html', locals())
+
+
+def test_results_to_csv(filename, answers, correctAnswers, studentId, testId):
+    assert len(answers) == len(correctAnswers)
+    score = 0
+    resStr = str(studentId) + ';' + str(testId) + ';'
+    for i in range(len(answers)):
+        if answers[i] == correctAnswers[i]:
+            resStr += '1;'
+            score += 1
+        else:
+            resStr += '0;'
+
+    fo = open(filename, 'w')
+    fo.write(resStr + "\n")
+    fo.close()
+    return (score/len(answers))*100
