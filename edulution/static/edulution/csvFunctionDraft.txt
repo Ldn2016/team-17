@@ -1,0 +1,13 @@
+def testResultsToCsv(filename, answers, correctAnswers, studentId, testId):
+	assert len(answers)==len(correctAnswers)
+	
+	resStr=str(studentId)+';'+str(testId)+';'
+	for i in range(len(answers)):
+		if answers[i]==correctAnswers[i]:
+			resStr+='1;'
+		else:
+			resStr+='0;'
+	
+	fo=open(filename,'w')
+	fo.write(resStr+"\n")
+	fo.close()
