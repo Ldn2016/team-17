@@ -1,8 +1,30 @@
 from django.db import models
 
 
-class User(models.Model):
+class Student(models.Model):
     username = models.CharField()
+    modules = models.ManyToManyField(
+        Module,
+        through='StudentModule',
+        through_fields=('student', 'module'),
+    )
+
+
+class StudentModule(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    nb_exo_succeded = models.PositiveIntegerField()
+    status = models.PositiveIntegerField() # number of times the student passed the test associated with the module
+
+
+class LogExercise(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    exo = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    nb_attempts = models.PositiveIntegerField()
+    struggling = models.BooleanField()
+    date_completed = models.DateField()
+    percentage_of_questions_passed = models.FloatField()
+    nb_attempts_before_completion = models.PositiveIntegerField()
 
 
 # like maths, literature
